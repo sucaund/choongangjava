@@ -8,7 +8,7 @@ public class Exam5 {
 				for (int J = 5; J >= i; J--) {
 					System.out.print("*");
 				}
-				System.out.println( );
+				System.out.println(123/100);
 			}
 	}
 }
