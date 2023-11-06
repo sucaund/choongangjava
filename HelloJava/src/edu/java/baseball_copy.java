@@ -18,15 +18,9 @@ public class baseball_copy {
 		int com2 = com / 10 % 10;
 		int com3 = com % 10;
 
-		if (com1 == com2 || com1 == com3 || com2 == com3) {
-
-		}
-
-		else {
-			coml[0] = (char) com1;
-			coml[1] = (char) com2;
-			coml[2] = (char) com3;
-		}
+		coml[0] = (char) com1;
+		coml[1] = (char) com2;
+		coml[2] = (char) com3;
 
 		while (count < 10) {
 
@@ -36,14 +30,14 @@ public class baseball_copy {
 			int user2 = user / 10 % 10;
 			int user3 = user % 10;
 
+			userl[0] = (char) user1;
+			userl[1] = (char) user2;
+			userl[2] = (char) user3;
+
 			if (user1 == user2 || user1 == user3 || user2 == user3) {
 				System.out.println("중복수입니다!");
 				continue;
 			}
-
-			userl[0] = (char) user1;
-			userl[1] = (char) user2;
-			userl[2] = (char) user3;
 
 			if (userl[0] == coml[0]) {
 				strike++;
@@ -52,6 +46,7 @@ public class baseball_copy {
 				ball++;
 				System.out.println(strike + "스트라이크" + ball + "볼");
 			}
+
 			if (userl[1] == coml[1]) {
 				strike++;
 				System.out.println(strike + "스트라이크" + ball + "볼");
@@ -66,13 +61,16 @@ public class baseball_copy {
 				ball++;
 				System.out.println(strike + "스트라이크" + ball + "볼");
 			}
-			if (strike >= 3) {
-				System.out.println("오우! 축하드려요! 점집차리세요!");
-				System.exit(0);
-			}
+
 			count++;
 
+			continue;
 		} // while
+
+		if (strike >= 3) {
+			System.out.println("오우! 축하드려요! 점집차리세요!");
+			System.exit(0);
+		}
 
 		if (count > 10) {
 			System.out.println("이런 10회동안 점수가 안나왔군요");
