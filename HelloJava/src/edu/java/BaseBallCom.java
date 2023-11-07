@@ -8,7 +8,7 @@ public class BaseBallCom {
 	int com3 = com % 10;
 	char[] coml = new char[3];
 
-	BaseBallCom(int com1, int com2, int com3, char[] coml) {
+		BaseBallCom(int com1, int com2, int com3, char[] coml) {
 		this.com1=com1;
 		this.com2=com2;
 		this.com3=com3;

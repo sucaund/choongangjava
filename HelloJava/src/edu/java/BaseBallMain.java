@@ -2,8 +2,6 @@ package edu.java;
 
 import java.util.Scanner;
 
-import javax.naming.spi.DirStateFactory.Result;
-
 public class BaseBallMain {
 
 	int count;
@@ -23,8 +21,6 @@ public class BaseBallMain {
 		BaseBallUser user = new BaseBallUser();
 		//컴퓨터 입력값을 3자리수로 만들고 각 자릿수별로 나누어 배열에 집어넣은 클래스 생성▼
 		BaseBallCom com = new BaseBallCom();
-		user.userl;
-		com.coml;
 		
 		while (count<10) {
 			//게임시작시 유저입력값을 적용받아 BaseBallUser생성자에 적용하려함▼
