@@ -23,7 +23,7 @@ public class ReperencTest {
 		System.out.println(person2.si);
 
 		person1.setName("홍길동");
-		person2.setName("홍길동");
+		person2.setName("곽길동");
 		System.out.println(person1.getName());
 		System.out.println(person2.getName());
 		System.out.println(person1.name.hashCode());
