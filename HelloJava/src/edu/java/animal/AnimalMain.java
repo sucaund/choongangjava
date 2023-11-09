@@ -6,7 +6,7 @@ public class AnimalMain {
 	public static void main(String[] args) {
 		
 		Able lion= new Lion();
-		Able eagle= new Eagle();
+		Able eagle= new Eagle(); 
 		
 		
 		printname(lion);
@@ -31,3 +31,4 @@ public class AnimalMain {
 		animal.walk();
 		}
 }
+ 
