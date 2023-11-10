@@ -3,7 +3,7 @@ package edu.java.exception;
 public class AgeUnder19Main {
 
 	public static void main(String[] args) {
-
+		
 		int age = 51;
 		if (age < 19) {
 			try {
