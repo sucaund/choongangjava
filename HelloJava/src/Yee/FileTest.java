@@ -12,14 +12,18 @@ public class FileTest {
 //	Filereader
 
 	public static void main(String[] args) {
+//	파일을 추상화
 		File f = new File("c:/memopad/test.txt");
+//		파일존재 확인 !부정이니깐 만약 없으면...
 		if(!f.exists()) {
-		try {
+//		없으면 새로만들어라
+			try {
 		f.createNewFile();
 		} catch (IOException ioe) {
 			ioe.printStackTrace();
 		}
 		}
+//		문자단위에 파일에 쓰는애
 		FileWriter fw=null;
 			try {
 				fw=new FileWriter(f);
@@ -28,6 +32,7 @@ public class FileTest {
 			ioe.printStackTrace();
 			}finally {
 				try {
+//					파일을 열었으면 닫는건 필수!
 					fw.close();
 			}catch (IOException ioe) {
 				ioe.printStackTrace();
