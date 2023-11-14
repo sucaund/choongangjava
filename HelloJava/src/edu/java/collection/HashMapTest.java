@@ -24,11 +24,8 @@ public class HashMapTest {
 		Set keySet =map.keySet();
 		Iterator it =keySet.iterator();
 		
-		try {
-			while(it.hasNext()) {
-				String nex
-			}
-		}
+		
+		
 	
 	}
 

@@ -40,14 +40,6 @@ while (it.hasNext()) {
 for (Integer in : al) {
 	System.out.println(in/map.size());
 }
-//		List<Integer> st = new ArrayList<Integer>();
-//
-//		while (true) {
-//			for (int i = 2; i <= 4; i++) {
-//				int py = st.get(i);
-//				
-//			}
-//		}
 
 	}
 }
