@@ -31,7 +31,7 @@ public class ReservationMain {
 					);
 		
 		}
-		System.out.println(roomlist);
+		System.out.println(roomlict);
 
 		//3. 영화관 생성
 		
