@@ -9,9 +9,16 @@ public class MemoPad {
 	private final Memo[] memoentity;
 	private final int MEMO_SIZE =20;
 
+
+	
 public  MemoPad() {
 	this.memoentity= new Memo[MEMO_SIZE];
 }
+
+//메모전체보기
+
+
+
 //메모작성및 용량확인
 public void addMemo() {
 	System.out.println("");
@@ -29,7 +36,7 @@ public void addMemo() {
 	String write = scanner.nextLine();
 
 	memoentity[this.memoLength++]=
-			Memo.memoentity(name,write);
+			Memo.memo(name,write);
 	
 	System.out.println();
 }

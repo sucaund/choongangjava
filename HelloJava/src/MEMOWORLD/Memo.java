@@ -12,6 +12,10 @@ public Memo(String name, String write) {
 	this.write = write;
 }
 
+static Memo newInstance(String name, String write) {
+	return new Memo(name,write);
+}
+
 public void setName(String name) {
 	this.name = name;
 }
