@@ -50,11 +50,9 @@ public class AdderClient extends JFrame{
 		
 		
 
-		topPanel.add(textArea);
-		midPanel.add(textArea1);
+		
 
-		this.add(topPanel);
-		this.add(midPanel);
+	ad
 		
 
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
