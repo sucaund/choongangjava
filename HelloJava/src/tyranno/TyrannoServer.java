@@ -9,39 +9,26 @@ import java.net.Socket;
 import edu.java.net.Qthread;
 
 public class TyrannoServer {
-	final static int SERVER_PORT = 7878;
+	final static int SERVER_PORT = 7143;
 
 	public static void main(String[] args) {
-		ObjectInputStream ois = null;
-		ObjectOutputStream oos = null;
-
-		ServerSocket serverSocket = null;
-		Socket socket = null;
 		try {
+			ServerSocket serverSocket = null;
+			Socket socket = null;			
+			TyrannoIn in = new TyrannoIn("티라노 병따개", 1000000, 0,
+					"티라노 병따개! 고대의 포식자가 \r\n" + "\r\n" + "현대로넘어와 맥주까지 노립니다…\r\n" + "\r\n" + "순순히 맥주를 넘기고 목숨을 지키세요!");
+			TyrannoDonae donae = new TyrannoDonae();
 			serverSocket = new ServerSocket(SERVER_PORT);
 			while (true) {
 				socket = serverSocket.accept(); // 소켓 연결에 성공하면
-				oos = new ObjectOutputStream(socket.getOutputStream());
-				ois = new ObjectInputStream(socket.getInputStream());
-//쓰레드 생성> 스타트
-				
-				TyrannoIn in = new TyrannoIn("티라노 병따개", 1000000, 0,
-						"티라노 병따개! 고대의 포식자가 \r\n" + "\r\n" + "현대로넘어와 맥주까지 노립니다…\r\n" + "\r\n" + "순순히 맥주를 넘기고 목숨을 지키세요!");
-
-				oos.writeObject(in);
-				oos.flush();
-
-				int donae = ois.readInt();
-				in.setMoney(donae);
-
-				oos.writeObject(in);
-				oos.flush();
+				System.out.println("후원채널에 연결을 성공하셨습니다!");
+				new TyrannoThread(socket, in,donae).start();//				
 
 			}
 		} catch (IOException e) {
+			System.out.println("입출력에 문제가있어요!");
 			// TODO 자동 생성된 catch 블록
 			e.printStackTrace();
-		}
-
+		} 
 	}// main
 }// class

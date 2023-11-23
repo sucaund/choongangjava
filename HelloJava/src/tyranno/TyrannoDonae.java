@@ -17,8 +17,8 @@ public class TyrannoDonae implements Serializable{
 		super();
 		Donae = donae;
 	}
-	public void setDonae(int donae) {
-		Donae = donae;
+	public int setDonae(int donae) {
+		return Donae = donae;
 	}
 	
 	
