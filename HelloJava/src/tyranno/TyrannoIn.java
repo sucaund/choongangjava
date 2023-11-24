@@ -3,7 +3,7 @@ package tyranno;
 import java.io.Serializable;
 
 public class TyrannoIn implements Serializable {
-
+	public static final long serialVersionUID = 789456123L;
 	private String name;
 	private int maxmoney;
 	private int money;

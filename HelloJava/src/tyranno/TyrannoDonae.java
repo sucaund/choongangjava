@@ -3,7 +3,7 @@ package tyranno;
 import java.io.Serializable;
 
 public class TyrannoDonae implements Serializable{
-
+	public static final long serialVersionUID = 789456122L;
 	private int Donae;
 
 	public TyrannoDonae() {

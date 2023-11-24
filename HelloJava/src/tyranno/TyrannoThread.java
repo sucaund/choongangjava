@@ -7,10 +7,8 @@ import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
 
-//우선 서버에 출력후 클라이언트클래스에 도네값을 입력하면 그값을 가지고 
-// 최대금액 최소금액을 비교 함과 동시에 모든 조건을 만족하면
-//도네금액을 현재 후원액에 추가한다
-// 현재 후원액이 목표금액과 같아진다면 후원 종료 선언 
+//쓰레드는 오로지 데이터 값만관리!!!!
+
 public class TyrannoThread extends Thread {
 
 	Socket socket;
@@ -18,6 +16,7 @@ public class TyrannoThread extends Thread {
 	TyrannoDonae donae;
 	ObjectInputStream is;
 	ObjectOutputStream os;
+
 	public TyrannoThread() {
 	}
 
@@ -27,44 +26,37 @@ public class TyrannoThread extends Thread {
 		this.donae = donae;
 	}
 
-//클라이언트 아웃풋 쓰레드는 인풋
 	@Override
 	public void run() {
 		try {
-			is = new ObjectInputStream(socket.getInputStream());
+			System.out.println("TT");
+			System.out.println(socket);
+			is= new ObjectInputStream(socket.getInputStream());//?????여기서 막힘!
+			System.out.println(is);
+//			is = new ObjectInputStream(socket.getInputStream());
 			os = new ObjectOutputStream(socket.getOutputStream());
-			donae = (TyrannoDonae) is.readObject();
-			int don = donae.getDonae();
-			int mon = tyrannoIn.getMoney();
+			//			os = new ObjectOutputStream(socket.getOutputStream());
+			/*
 			while (true) {
-//네트워크간의 통신에선 무조건 바이트 다누이이다
-//버퍼안에  아웃풋 스트링라이터 안에 소켓.겟바이트
-				while (tyrannoIn.getMaxmoney() <= tyrannoIn.getMoney())
-				{
-					
-					System.out.println("후원내용 : " + tyrannoIn.getName());
-					System.out.println("후원 목표액 : " + tyrannoIn.getMaxmoney());
-					System.out.println("현재 후원액 : " + tyrannoIn.getMoney());
-					System.out.println("후원내용" + tyrannoIn.getDetail());
-					System.out.println("후원 금액을 입력해주세요 : " + donae.getDonae());
+				System.out.println("111");
 
-					if (10000 > donae.getDonae() || donae.getDonae() > tyrannoIn.getMaxmoney()) {
-						System.out.println("적정 금액을 입력해주세요!");
-						return;
-					}
-						tyrannoIn.setMoney(don + mon);
+				os.writeObject(tyrannoIn);
+				System.out.println("22222");
 
+				os.writeObject(donae);
+//				donae = (TyrannoDonae) ((ObjectInputStream) is).readObject();
+				System.out.println("33333");
 
-					System.out.println("후원이 완료되었습니다!");
-				} // 비교while
+				os.flush();
+//						"후원이 완료되었습니다!"
+
 			} // true
+			*/
 		} // try
+
 		catch (IOException ioe) {
 			System.out.println("입출력 오류가 발생했습니다: " + ioe.getMessage());
 			ioe.printStackTrace();
-		} catch (ClassNotFoundException ce) {
-			System.out.println("입출력 오류가 발생했습니다: " + ce.getMessage());
-			ce.printStackTrace();
-		}
+		} 
 	}// run
 }// class
