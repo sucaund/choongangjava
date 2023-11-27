@@ -14,8 +14,8 @@ public class TyrannoThread extends Thread {
 	Socket socket;
 	TyrannoIn tyrannoIn;
 	TyrannoDonae donae;
-	ObjectInputStream is;
-	ObjectOutputStream os;
+	ObjectInputStream is = null;
+	ObjectOutputStream os = null;
 
 	public TyrannoThread() {
 	}
@@ -29,34 +29,54 @@ public class TyrannoThread extends Thread {
 	@Override
 	public void run() {
 		try {
-			System.out.println("TT");
-			System.out.println(socket);
-			is= new ObjectInputStream(socket.getInputStream());//?????여기서 막힘!
-			System.out.println(is);
-//			is = new ObjectInputStream(socket.getInputStream());
-			os = new ObjectOutputStream(socket.getOutputStream());
-			//			os = new ObjectOutputStream(socket.getOutputStream());
-			/*
-			while (true) {
+			System.out.println("쓰레드 입장하였습니다");
+			System.out.println("해당 쏘켓 주소입니다!" + socket);
+			os = (ObjectOutputStream) socket.getOutputStream();
+			is= (ObjectInputStream) socket.getInputStream();//해답은 서버쪽 도네 생성자 값에 아무것도 넣지않아서이다!
+
+			
+			int don = (int)is.readObject();
+			donae.setDonae(don);
+		
+			
+			System.out.println("첫번쨰 쓰레드 문제 해결입니다!");
+//			donae.setDonae(new Integer((int) is.readObject()));
+//			while (true) {
 				System.out.println("111");
-
-				os.writeObject(tyrannoIn);
-				System.out.println("22222");
-
-				os.writeObject(donae);
-//				donae = (TyrannoDonae) ((ObjectInputStream) is).readObject();
-				System.out.println("33333");
-
+				((ObjectOutputStream) os).writeObject(tyrannoIn);
+				((ObjectOutputStream) os).writeObject(donae);
 				os.flush();
+				System.out.println("오브젝트 tyrannoIn writeObject는 성공입니다!");//여기서 막힘!
+				System.out.println("33333");
+							
+//				os.writeObject(donae);
 //						"후원이 완료되었습니다!"
 
-			} // true
-			*/
+//			} // true
+		
 		} // try
 
+//		catch (ClassNotFoundException e) {
+//			System.out.println("클래스 오류입니다!");
+//			e.printStackTrace();
+//		}
 		catch (IOException ioe) {
-			System.out.println("입출력 오류가 발생했습니다: " + ioe.getMessage());
+			System.out.println("입출력 오류가 발생했습니다!!!!!!! " + ioe.getMessage());
 			ioe.printStackTrace();
-		} 
+		} catch (ClassNotFoundException e) {
+			// TODO 자동 생성된 catch 블록
+			e.printStackTrace();
+		} 		finally {
+			try {
+				is.close();
+				os.close();
+				socket.close();
+				
+			} catch (IOException e) {
+				// TODO 자동 생성된 catch 블록
+				e.printStackTrace();
+			}
+		}
+		
 	}// run
 }// class

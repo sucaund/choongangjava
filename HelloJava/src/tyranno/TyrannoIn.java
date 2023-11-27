@@ -10,7 +10,8 @@ public class TyrannoIn implements Serializable {
 	private String detail;
 	
 	public TyrannoIn() {
-		// TODO 자동 생성된 생성자 스텁
+		
+		
 	}
 	
 	
