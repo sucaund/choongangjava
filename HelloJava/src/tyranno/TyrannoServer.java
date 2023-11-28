@@ -24,7 +24,8 @@ public class TyrannoServer {
 						"티라노 병따개! 고대의 포식자가 \r\n" + "\r\n" + "현대로넘어와 맥주까지 노립니다!!!\r\n" + "\r\n" + "순순히 맥주를 넘기고 목숨을 지키세요!");
 				TyrannoDonae donae = new TyrannoDonae(0);
 
-				new TyrannoThread(socket, in,donae).start();//				
+				new TyrannoOutputThread(socket, in,donae).start();//				
+				new TyrannoInputThread(socket, in,donae).start();//				
 
 			}
 		} catch (IOException e) {
@@ -32,14 +33,5 @@ public class TyrannoServer {
 			// TODO 자동 생성된 catch 블록
 			e.printStackTrace();
 		} 
-		finally {
-			try {
-					
-				socket.close();
-			} catch (IOException e) {
-				// TODO 자동 생성된 catch 블록
-				e.printStackTrace();
-			}
-		}
 	}// main
 }// class
