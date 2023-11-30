@@ -25,14 +25,16 @@ public class TyrannoOutputThread extends Thread {
 	@Override
 	public void run() {
 		try {
+while (true) {
+	
 			os = new ObjectOutputStream(socket.getOutputStream());
-			
 				os.writeObject(tyrannoIn);
 				os.writeObject(donae);
 				os.flush();
 				System.out.println("당신은 최고입니다! output 순환");
 			}//while
 
+		}			
 	
 		catch (IOException ioe) {
 			System.out.println("입출력 오류가 발생했습니다!!!!!!! " + ioe.getMessage());

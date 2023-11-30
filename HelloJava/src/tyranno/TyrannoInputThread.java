@@ -26,11 +26,14 @@ public class TyrannoInputThread extends Thread {
 	@Override
 	public void run() {
 		try {
+			while (true) {
+				
 			dis = new DataInputStream(socket.getInputStream());// 해답은 서버쪽 도네 생성자 값에 아무것도 넣지않아서이다!
 			
 				i = dis.readInt();
 				donae.setDonae(i);
 				System.out.println("힘을내세요!(input순환)");
+			}
 				
 				
 		

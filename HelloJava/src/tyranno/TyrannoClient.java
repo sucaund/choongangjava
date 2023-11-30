@@ -18,16 +18,16 @@ public class TyrannoClient {
 		Scanner sc = new Scanner(System.in);
 		int answer = 0;
 		try {// try
+			while (true) {
 			socket = new Socket(SERVER_IP, SERVER_PORT);
 			is = new ObjectInputStream(socket.getInputStream());
 			dos = new DataOutputStream(socket.getOutputStream());
-			dos.writeInt(answer);// 단순히 int값의 데이터를 보낼떈 Object가 아닌 DataOutputStream로 보내준다
-			dos.flush();
+//문제!!! while (true)로인해 값을 입력해도 입력값이 반복문안에서만 돌기에...
+//			dhqmwprxm
+			TyrannoIn ti = (TyrannoIn) is.readObject();
+			TyrannoDonae td = (TyrannoDonae) is.readObject();
+			System.out.println(td);
 
-			while (true) {
-
-				TyrannoIn ti = (TyrannoIn) is.readObject();
-				TyrannoDonae td = (TyrannoDonae) is.readObject();
 //				클라이언트 클래스가 있는 컴퓨너에는 클라이언트만이 아니라 생성자클래스들도 있어야한다!
 				System.out.println("======================================");
 				System.out.println("           __\r\n" + "                / _)\r\n" + "       _.----._/ /\r\n"
@@ -40,8 +40,14 @@ public class TyrannoClient {
 				System.out.println("\n");
 				System.out.println("쓰레드에서 전송받은 도네값 : " + td.getDonae());
 				System.out.print("후원액을 입력해주세요 : ");
+				
 				answer = sc.nextInt();
-			}
+				dos.writeInt(answer);// 단순히 int값의 데이터를 보낼떈 Object가 아닌 DataOutputStream로 보내준다
+				dos.flush();
+				
+			}//true
+
+				
 //				구현희망1.  오로지 숫자만입력및 1000부터 100000까지만입력가능한 제약
 			// 단순히 int값의 데이터를 보낼떈 Object가 아닌 DataOutputStream로 보내준다
 
